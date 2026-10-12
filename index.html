@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ÉLÉGANCE — Nafis Ayollar Liboslari Butigi</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rose: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              300: '#fda4af',
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+              800: '#9f1239',
+              900: '#881337',
+            },
+            cream: {
+              50: '#fdfbf7',
+              100: '#f9f6f0',
+              200: '#f3ede2',
+              300: '#eadbc8',
+            },
+            gold: {
+              400: '#f3e5ab',
+              500: '#d4af37',
+              600: '#c5a880',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Maxsus stillar -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#FDFBF7] text-stone-900 antialiased selection:bg-rose-200 selection:text-rose-900">
+
+  <!-- 1. Yuqori E'lonlar Tasmasi (Top Announcement Bar) -->
+  <div class="bg-gradient-to-r from-rose-900 via-rose-800 to-rose-900 text-rose-100 text-[11px] md:text-xs py-2 px-4 tracking-wide text-center flex items-center justify-center gap-2 font-medium">
+    <span>✨ Bahor-Yoz 2026 Yangi Kolleksiyasi</span>
+    <span class="opacity-40">•</span>
+    <span>500,000 so'mdan ortiq xaridlarga yetkazib berish <b>BEPUL</b></span>
+    <span class="opacity-40 hidden sm:inline">•</span>
+    <span class="hidden sm:inline">10% chegirma kodi: <b class="bg-white/20 px-2 py-0.5 rounded text-white tracking-widest font-mono">AYOL2026</b></span>
+  </div>
+
+  <!-- 2. Asosiy Header va Navigatsiya -->
+  <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="#" class="flex flex-col items-start group">
+          <span class="font-serif-luxury text-2xl md:text-3xl font-extrabold tracking-[0.25em] text-stone-900 group-hover:text-rose-600 transition">
+            ÉLÉGANCE
+          </span>
+          <span class="text-[9px] uppercase tracking-[0.35em] text-rose-500 font-semibold -mt-1 font-sans">
+            Haute Couture & Boutique
+          </span>
+        </a>
+
+        <!-- Desktop Menyu -->
+        <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-700">
+          <a href="#" class="hover:text-rose-600 transition text-rose-600 font-semibold">Bosh sahifa</a>
+          <a href="#catalog-section" class="hover:text-rose-600 transition">Liboslar Katalogi</a>
+          <a href="#new-season" class="hover:text-rose-600 transition">Yangi To'plam</a>
+          <a href="#features-section" class="hover:text-rose-600 transition">Afzalliklar</a>
+          <a href="#reviews-section" class="hover:text-rose-600 transition">Mijozlar Fikri</a>
+          <a href="#contact-section" class="hover:text-rose-600 transition">Aloqa</a>
+        </nav>
+
+        <!-- O'ng Tomon: Qidiruv, Sevimlilar, Savatcha, Admin -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          
+          <!-- Qidiruv Maydoni (Desktop) -->
+          <div class="relative hidden sm:block w-48 lg:w-60">
+            <input type="text" id="search-input" placeholder="Libos nomi, matosi..." class="w-full bg-stone-100/80 border border-stone-200/80 rounded-full py-1.5 pl-9 pr-4 text-xs focus:outline-none focus:border-rose-400 focus:bg-white transition placeholder:text-stone-400">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-xs"></i>
+          </div>
+
+          <!-- Sevimlilar (Wishlist) -->
+          <button onclick="openWishlist()" class="relative p-2.5 rounded-full hover:bg-rose-50 text-stone-700 hover:text-rose-600 transition" title="Sevimlilar">
+            <i class="fa-regular fa-heart text-lg"></i>
+            <span id="wishlist-count" class="hidden absolute top-1 right-1 w-4 h-4 bg-rose-500 text-white rounded-full text-[10px] font-bold flex items-center justify-center">0</span>
+          </button>
+
+          <!-- Savatcha (Cart) -->
+          <button onclick="openCart()" class="relative p-2.5 rounded-full hover:bg-rose-50 text-stone-700 hover:text-rose-600 transition" title="Savatcha">
+            <i class="fa-solid fa-bag-shopping text-lg"></i>
+            <span id="cart-count" class="hidden absolute top-1 right-1 w-4 h-4 bg-rose-600 text-white rounded-full text-[10px] font-bold flex items-center justify-center animate-pulse">0</span>
+          </button>
+
+          <!-- Admin Panelga Kirish -->
+          <button onclick="openAdminModal()" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-medium transition" title="Do'kon boshqaruvi">
+            <i class="fa-solid fa-sliders text-xs"></i>
+            <span>Boshqaruv</span>
+          </button>
+
+          <!-- Mobil menyu tugmasi -->
+          <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl text-stone-700 hover:bg-rose-50 transition">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Mobil Menyu Qavati -->
+      <div id="mobile-menu" class="hidden lg:hidden border-t border-rose-100/80 py-4 space-y-3">
+        <div class="px-2 pb-2">
+          <input type="text" oninput="searchQuery = this.value; renderCatalog();" placeholder="Kiyim nomi yoki matosi bo'yicha qidiruv..." class="w-full bg-stone-100 border border-stone-200 rounded-full py-2 px-4 text-xs focus:outline-none focus:border-rose-400">
+        </div>
+        <div class="flex flex-col space-y-2 text-sm font-medium text-stone-700 px-2">
+          <a href="#" class="py-1 hover:text-rose-600">Bosh sahifa</a>
+          <a href="#catalog-section" class="py-1 hover:text-rose-600">Liboslar Katalogi</a>
+          <a href="#new-season" class="py-1 hover:text-rose-600">Yangi To'plam</a>
+          <a href="#features-section" class="py-1 hover:text-rose-600">Afzalliklar</a>
+          <a href="#reviews-section" class="py-1 hover:text-rose-600">Mijozlar Fikri</a>
+          <button onclick="openAdminModal()" class="py-1 text-left text-rose-600 font-semibold flex items-center gap-2">
+            <i class="fa-solid fa-sliders"></i> Do'kon Boshqaruvi
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. Hero Section (Hashamatli Magazine Banner) -->
+  <section class="relative overflow-hidden pt-6 pb-16 lg:py-20 gradient-rose-gold border-b border-rose-100/60">
+    <!-- Orqa fon naqshli doiralari -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-rose-200/40 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 -left-20 w-80 h-80 bg-amber-100/60 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Chap Tomon: Matnlar va CTA -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-rose-200 shadow-sm backdrop-blur-sm">
+            <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+            <span class="text-xs uppercase tracking-widest font-semibold text-rose-700">Yangi Bahor-Yoz 2026 To'plami</span>
+          </div>
+
+          <h1 class="font-serif-luxury text-4xl sm:text-5xl lg:text-6xl font-extrabold text-stone-900 leading-[1.15] tracking-tight">
+            Har bir ayol <br>
+            <span class="italic font-normal text-rose-600">beqiyos nafosatga</span> loyiq.
+          </h1>
+
+          <p class="text-base sm:text-lg text-stone-600 max-w-xl font-light leading-relaxed">
+            ÉLÉGANCE butigida eng sara tabiiy ipak, nozik atlas, yumshoq kaşmir va klassik tvid liboslar jamlangan. Qomatingizga mukammal tushuvchi bichimlar va nozik sharqona did uyg'unligi.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#catalog-section" class="gradient-btn-luxury px-8 py-4 rounded-full text-white font-semibold text-sm tracking-wider uppercase flex items-center gap-2 shadow-lg">
+              <span>Katalogni Ko'rish</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+
+            <button onclick="openSizeGuide()" class="px-6 py-4 rounded-full bg-white/90 hover:bg-white text-stone-800 border border-stone-200/80 font-medium text-sm transition shadow-sm flex items-center gap-2">
+              <i class="fa-solid fa-ruler-combined text-rose-500"></i>
+              <span>O'lchamlar jadvali</span>
+            </button>
+          </div>
+
+          <!-- Kichik ijtimoiy ko'rsatkichlar -->
+          <div class="pt-8 border-t border-rose-200/50 grid grid-cols-3 gap-6 max-w-lg">
+            <div>
+              <div class="font-serif-luxury text-2xl lg:text-3xl font-bold text-stone-900">10,000+</div>
+              <div class="text-xs text-stone-500 mt-0.5">Mamnun xonimlar</div>
+            </div>
+            <div>
+              <div class="font-serif-luxury text-2xl lg:text-3xl font-bold text-stone-900">100%</div>
+              <div class="text-xs text-stone-500 mt-0.5">Tabiiy matolar</div>
+            </div>
+            <div>
+              <div class="font-serif-luxury text-2xl lg:text-3xl font-bold text-stone-900">24/7</div>
+              <div class="text-xs text-stone-500 mt-0.5">Stilist maslahati</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- O'ng Tomon: Magazine Uslubidagi Fotosuratlar Kolleksiyasi -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-sm sm:max-w-md">
+            
+            <!-- Asosiy rasm ramkasi -->
+            <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[3/4] bg-stone-100">
+              <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=900&q=80" alt="ÉLÉGANCE Bahor To'plami" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-transparent"></div>
+              <div class="absolute bottom-6 left-6 right-6 text-white">
+                <span class="text-[10px] uppercase tracking-widest text-rose-200 font-semibold">Exquisite Collection</span>
+                <h3 class="font-serif-luxury text-xl font-bold mt-0.5">Fransuzcha Tvid va Shoyi</h3>
+              </div>
+            </div>
+
+            <!-- Ikkinchi floating kartochka -->
+            <div class="hidden sm:block absolute -bottom-6 -left-10 z-20 glass-card p-4 rounded-2xl shadow-xl max-w-[210px] animate-float">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-rose-500 text-white flex items-center justify-center text-sm font-bold shadow-md">
+                  <i class="fa-solid fa-gift"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-stone-800">Kutilmagan sovg'a</div>
+                  <div class="text-[10px] text-stone-500">Har bir xarid bilan birga shoyi ro'molcha!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Uchinchi floating reyting kartochkasi -->
+            <div class="absolute -top-6 -right-6 z-20 glass-card px-4 py-3 rounded-2xl shadow-xl border border-white">
+              <div class="flex items-center gap-1.5 text-amber-500 text-xs mb-1">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <div class="text-xs font-bold text-stone-800">4.9/5 Baholash</div>
+              <div class="text-[10px] text-stone-500">1,240+ baho</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Toifalar Ko'rinishi (Categories Quick Bar) -->
+  <section class="py-12 bg-white border-b border-stone-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-8">
+        <span class="text-xs uppercase tracking-widest text-rose-500 font-semibold">Toifalar</span>
+        <h2 class="font-serif-luxury text-2xl sm:text-3xl font-bold text-stone-900 mt-1">Har Bir Tadbir Uchun Maxsus</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        
+        <div onclick="activeCategory='dresses'; renderCatalog(); scrollToCatalog();" class="group cursor-pointer rounded-2xl overflow-hidden relative aspect-[4/5] bg-stone-100 shadow-sm hover:shadow-md transition">
+          <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-stone-950/20 to-transparent"></div>
+          <div class="absolute bottom-3 inset-x-3 text-center text-white">
+            <h4 class="font-serif-luxury font-semibold text-sm">Ko'ylaklar</h4>
+            <span class="text-[10px] text-rose-200">Kolleksiyani ko'rish &rarr;</span>
+          </div>
+        </div>
+
+        <div onclick="activeCategory='suits'; renderCatalog(); scrollToCatalog();" class="group cursor-pointer rounded-2xl overflow-hidden relative aspect-[4/5] bg-stone-100 shadow-sm hover:shadow-md transition">
+          <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-stone-950/20 to-transparent"></div>
+          <div class="absolute bottom-3 inset-x-3 text-center text-white">
+            <h4 class="font-serif-luxury font-semibold text-sm">Klassik Kostyumlar</h4>
+            <span class="text-[10px] text-rose-200">Kolleksiyani ko'rish &rarr;</span>
+          </div>
+        </div>
+
+        <div onclick="activeCategory='evening'; renderCatalog(); scrollToCatalog();" class="group cursor-pointer rounded-2xl overflow-hidden relative aspect-[4/5] bg-stone-100 shadow-sm hover:shadow-md transition">
+          <img src="https://images.unsplash.com/photo-1518049362265-d5b2a6467637?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-stone-950/20 to-transparent"></div>
+          <div class="absolute bottom-3 inset-x-3 text-center text-white">
+            <h4 class="font-serif-luxury font-semibold text-sm">Oqshom Liboslari</h4>
+            <span class="text-[10px] text-rose-200">Kolleksiyani ko'rish &rarr;</span>
+          </div>
+        </div>
+
+        <div onclick="activeCategory='casual'; renderCatalog(); scrollToCatalog();" class="group cursor-pointer rounded-2xl overflow-hidden relative aspect-[4/5] bg-stone-100 shadow-sm hover:shadow-md transition">
+          <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-stone-950/20 to-transparent"></div>
+          <div class="absolute bottom-3 inset-x-3 text-center text-white">
+            <h4 class="font-serif-luxury font-semibold text-sm">Kundalik Casual</h4>
+            <span class="text-[10px] text-rose-200">Kolleksiyani ko'rish &rarr;</span>
+          </div>
+        </div>
+
+        <div onclick="activeCategory='outerwear'; renderCatalog(); scrollToCatalog();" class="group cursor-pointer rounded-2xl overflow-hidden relative aspect-[4/5] bg-stone-100 shadow-sm hover:shadow-md transition col-span-2 md:col-span-1">
+          <img src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=500&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-stone-950/20 to-transparent"></div>
+          <div class="absolute bottom-3 inset-x-3 text-center text-white">
+            <h4 class="font-serif-luxury font-semibold text-sm">Ustki Kiyim</h4>
+            <span class="text-[10px] text-rose-200">Kolleksiyani ko'rish &rarr;</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. Afzalliklarimiz (Features Bar) -->
+  <section id="features-section" class="py-10 bg-rose-50/50 border-b border-rose-100/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="flex items-center gap-4 bg-white p-4 rounded-2xl border border-rose-100/80 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-xl flex-shrink-0">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <div>
+            <h4 class="font-serif-luxury font-bold text-sm text-stone-900">Tezkor Yetkazish</h4>
+            <p class="text-[11px] text-stone-500">Toshkentda 24 soatda, viloyatlarga 2-3 kunda</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 bg-white p-4 rounded-2xl border border-rose-100/80 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-xl flex-shrink-0">
+            <i class="fa-solid fa-vest"></i>
+          </div>
+          <div>
+            <h4 class="font-serif-luxury font-bold text-sm text-stone-900">O'lchab Ko'rib To'lash</h4>
+            <p class="text-[11px] text-stone-500">Kuryer 2 ta o'lchamda olib kelishi mumkin</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 bg-white p-4 rounded-2xl border border-rose-100/80 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-xl flex-shrink-0">
+            <i class="fa-solid fa-gem"></i>
+          </div>
+          <div>
+            <h4 class="font-serif-luxury font-bold text-sm text-stone-900">100% Premium Sifat</h4>
+            <p class="text-[11px] text-stone-500">Italiya va Turkiyaning tabiiy matolari</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 bg-white p-4 rounded-2xl border border-rose-100/80 shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-xl flex-shrink-0">
+            <i class="fa-solid fa-rotate-left"></i>
+          </div>
+          <div>
+            <h4 class="font-serif-luxury font-bold text-sm text-stone-900">14 Kun Almashtirish</h4>
+            <p class="text-[11px] text-stone-500">O'lcham to'g'ri kelmasa oson almashtiramiz</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Asosiy Katalog va Filtrlash Bo'limi -->
+  <section id="catalog-section" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Sarlavha va Kategoriya Pillalari -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+      <div>
+        <span class="text-xs uppercase tracking-widest text-rose-500 font-semibold">Maxsus Tanlov</span>
+        <h2 class="font-serif-luxury text-3xl sm:text-4xl font-extrabold text-stone-900 mt-1">Nafis Liboslar Kolleksiyasi</h2>
+        <p class="text-xs sm:text-sm text-stone-500 mt-1">Har bir libos sizning chiroyingiz va nafosatingizni ochib beradi</p>
+      </div>
+
+      <!-- Kategoriya Tugmalari -->
+      <div class="flex flex-wrap items-center gap-2">
+        <button class="category-pill px-4 py-2 rounded-full text-xs font-semibold bg-stone-900 text-white shadow-sm transition" data-category="all">
+          Barchasi
+        </button>
+        <button class="category-pill px-4 py-2 rounded-full text-xs font-semibold bg-white text-stone-700 hover:bg-stone-100 border border-stone-200/80 shadow-sm transition" data-category="dresses">
+          Ko'ylaklar
+        </button>
+        <button class="category-pill px-4 py-2 rounded-full text-xs font-semibold bg-white text-stone-700 hover:bg-stone-100 border border-stone-200/80 shadow-sm transition" data-category="suits">
+          Kostyumlar
+        </button>
+        <button class="category-pill px-4 py-2 rounded-full text-xs font-semibold bg-white text-stone-700 hover:bg-stone-100 border border-stone-200/80 shadow-sm transition" data-category="evening">
+          Oqshom
+        </button>
+        <button class="category-pill px-4 py-2 rounded-full text-xs font-semibold bg-white text-stone-700 hover:bg-stone-100 border border-stone-200/80 shadow-sm transition" data-category="casual">
+          Casual
+        </button>
+        <button class="category-pill px-4 py-2 rounded-full text-xs font-semibold bg-white text-stone-700 hover:bg-stone-100 border border-stone-200/80 shadow-sm transition" data-category="outerwear">
+          Ustki kiyim
+        </button>
+      </div>
+    </div>
+
+    <!-- Filtrlar va Saralash Paneli -->
+    <div class="bg-white p-4 sm:p-5 rounded-3xl border border-rose-100/80 shadow-sm mb-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-center">
+        
+        <!-- O'lcham bo'yicha tezkor filtr -->
+        <div>
+          <label class="block text-[11px] font-semibold text-stone-500 uppercase tracking-wider mb-1.5">O'lcham:</label>
+          <div class="flex flex-wrap gap-1.5">
+            <button class="size-filter-btn px-2.5 py-1 text-xs rounded-lg border border-stone-200 bg-stone-50 hover:bg-stone-100 font-mono transition" data-size="XS">XS</button>
+            <button class="size-filter-btn px-2.5 py-1 text-xs rounded-lg border border-stone-200 bg-stone-50 hover:bg-stone-100 font-mono transition" data-size="S">S</button>
+            <button class="size-filter-btn px-2.5 py-1 text-xs rounded-lg border border-stone-200 bg-stone-50 hover:bg-stone-100 font-mono transition" data-size="M">M</button>
+            <button class="size-filter-btn px-2.5 py-1 text-xs rounded-lg border border-stone-200 bg-stone-50 hover:bg-stone-100 font-mono transition" data-size="L">L</button>
+            <button class="size-filter-btn px-2.5 py-1 text-xs rounded-lg border border-stone-200 bg-stone-50 hover:bg-stone-100 font-mono transition" data-size="XL">XL</button>
+          </div>
+        </div>
+
+        <!-- Narx slayderi -->
+        <div>
+          <div class="flex justify-between items-center text-[11px] font-semibold text-stone-500 uppercase tracking-wider mb-1.5">
+            <span>Maksimal narx:</span>
+            <span id="price-value" class="text-rose-600 font-bold font-sans">1 500 000 so'm</span>
+          </div>
+          <input type="range" id="price-slider" min="300000" max="1500000" step="50000" value="1500000" class="w-full accent-rose-500 cursor-pointer h-1.5 bg-stone-200 rounded-lg">
+        </div>
+
+        <!-- Saralash -->
+        <div>
+          <label class="block text-[11px] font-semibold text-stone-500 uppercase tracking-wider mb-1.5">Saralash:</label>
+          <select id="sort-select" class="w-full bg-stone-50 border border-stone-200 rounded-xl py-2 px-3 text-xs text-stone-800 focus:outline-none focus:border-rose-400">
+            <option value="featured">Tavsiya etilgan</option>
+            <option value="price-asc">Narx: Arzondan qimmatga</option>
+            <option value="price-desc">Narx: Qimmatdan arzonga</option>
+            <option value="rating">Reyting bo'yicha</option>
+            <option value="newest">Yangi qo'shilganlar</option>
+          </select>
+        </div>
+
+        <!-- Statistika va Tozalash -->
+        <div class="flex items-center justify-between sm:justify-end gap-3 pt-2 sm:pt-0">
+          <span id="products-count" class="text-xs text-stone-500 font-medium">12 ta libos</span>
+          <button onclick="resetFilters()" class="text-xs text-rose-600 hover:text-rose-700 font-semibold flex items-center gap-1 hover:underline">
+            <i class="fa-solid fa-arrow-rotate-right text-[10px]"></i> Tozalash
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mahsulotlar To'plami (Dinamik Render qilinadi) -->
+    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- js/app.js orqali render bo'ladi -->
+    </div>
+
+  </section>
+
+  <!-- 7. Maxsus Mavsumiy Banner (Promo Callout) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="rounded-3xl overflow-hidden relative bg-stone-900 text-white p-8 sm:p-12 shadow-xl border border-stone-800">
+      <div class="absolute inset-0 opacity-30 bg-[url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=80')] bg-cover bg-center"></div>
+      <div class="relative z-10 max-w-xl space-y-4">
+        <span class="px-3 py-1 rounded-full bg-rose-500 text-white text-[10px] uppercase font-bold tracking-widest inline-block">Maxsus Taklif</span>
+        <h3 class="font-serif-luxury text-3xl sm:text-4xl font-bold leading-tight">
+          Harid qiling va 10% chegirmaga ega bo'ling
+        </h3>
+        <p class="text-xs sm:text-sm text-stone-300">
+          Buyurtma berishda promokod maydoniga <b class="text-rose-400 font-mono">AYOL2026</b> kodini kiriting va butikning barcha yangi liboslariga chegirma oling.
+        </p>
+        <div class="pt-2">
+          <button onclick="scrollToCatalog()" class="gradient-btn-luxury px-6 py-3 rounded-full text-xs uppercase tracking-wider font-bold text-white shadow-lg">
+            Hozir Xarid Qilish
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. O'lcham Tanlash Qo'llanmasi (Size Guide Promo Banner) -->
+  <section class="py-16 bg-white border-y border-stone-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
+        <div class="rounded-3xl overflow-hidden aspect-[16/10] bg-stone-100 border border-stone-200/80 shadow-md">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80" alt="Ayollar Libosi O'lchamlari" class="w-full h-full object-cover">
+        </div>
+
+        <div class="space-y-5">
+          <span class="text-xs uppercase tracking-widest text-rose-500 font-semibold">Qulaylik va Ishonch</span>
+          <h2 class="font-serif-luxury text-3xl sm:text-4xl font-bold text-stone-900 leading-tight">
+            O'lchamingiz bo'yicha <br>iklanayapsizmi?
+          </h2>
+          <p class="text-sm text-stone-600 leading-relaxed">
+            Biz siz uchun maxsus o'lchamlar jadvalini ishlab chiqdik. Agar baribir shubha qilsangiz, Toshkent shahri bo'ylab kuryerimiz siz tanlagan libosning <b>2 ta o'lchamini</b> olib borishi mumkin. Siz o'zingizga tushganini kiyib ko'rib, keyin to'lov qilasiz!
+          </p>
+
+          <div class="grid grid-cols-3 gap-4 pt-2">
+            <div class="p-3 bg-stone-50 rounded-2xl border border-stone-200/60 text-center">
+              <span class="text-xs font-mono font-bold text-stone-800">XS / S</span>
+              <div class="text-[10px] text-stone-500 mt-0.5">40 - 42 o'lcham</div>
+            </div>
+            <div class="p-3 bg-stone-50 rounded-2xl border border-stone-200/60 text-center">
+              <span class="text-xs font-mono font-bold text-stone-800">M / L</span>
+              <div class="text-[10px] text-stone-500 mt-0.5">44 - 46 o'lcham</div>
+            </div>
+            <div class="p-3 bg-stone-50 rounded-2xl border border-stone-200/60 text-center">
+              <span class="text-xs font-mono font-bold text-stone-800">XL / XXL</span>
+              <div class="text-[10px] text-stone-500 mt-0.5">48 - 52 o'lcham</div>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <button onclick="openSizeGuide()" class="text-sm font-semibold text-rose-600 hover:text-rose-700 flex items-center gap-2 group">
+              <span>Batafsil santimetrlar jadvalini ochish</span>
+              <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Mijozlarimiz Fikrlari (Reviews / Testimonials) -->
+  <section id="reviews-section" class="py-16 gradient-rose-gold border-b border-rose-100/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <span class="text-xs uppercase tracking-widest text-rose-500 font-semibold">Samimiy E'tiroflar</span>
+        <h2 class="font-serif-luxury text-3xl sm:text-4xl font-bold text-stone-900 mt-1">Xaridorlarimiz Nima Deydi?</h2>
+        <p class="text-xs sm:text-sm text-stone-600 mt-2">Butun O'zbekiston bo'ylab 10,000 dan ziyod nafis didli ayollarning mehrini qozondik</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="bg-white p-6 rounded-3xl border border-rose-100 shadow-sm flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex text-amber-400 text-xs gap-1">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xs sm:text-sm text-stone-700 italic leading-relaxed">
+              "Shoyi ko'ylak buyurtma qilgandim. Matosi juda nafis va yumshoq ekan! To'y marosimida barcha dugonalarim ko'ylagim qayerdan olinganini so'rashdi. Rahmat sizlarga!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-stone-100 mt-4">
+            <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-xs">
+              DK
+            </div>
+            <div>
+              <h5 class="text-xs font-bold text-stone-900">Dilnoza Karimova</h5>
+              <span class="text-[10px] text-stone-400">Toshkent shahri</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-3xl border border-rose-100 shadow-sm flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex text-amber-400 text-xs gap-1">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xs sm:text-sm text-stone-700 italic leading-relaxed">
+              "Klassik bej kostyumni oldim. Bichimi qomatga shunchalik chiroyli o'tirdiki, go'yo menga atab tikilgandek. Kuryer ham o'z vaqtida yetkazib berdi."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-stone-100 mt-4">
+            <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xs">
+              MR
+            </div>
+            <div>
+              <h5 class="text-xs font-bold text-stone-900">Madinaxon Rahimova</h5>
+              <span class="text-[10px] text-stone-400">Samarqand shahri</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-3xl border border-rose-100 shadow-sm flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex text-amber-400 text-xs gap-1">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xs sm:text-sm text-stone-700 italic leading-relaxed">
+              "Telegram orqali buyurtma berish juda oson ekan. Saytda savatchaga solib yubordim, menejer 5 daqiqada javob berib, o'lcham bo'yicha maslahat berdi. A'lo darajada!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-stone-100 mt-4">
+            <div class="w-10 h-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-xs">
+              SY
+            </div>
+            <div>
+              <h5 class="text-xs font-bold text-stone-900">Sevara Yo'ldosheva</h5>
+              <span class="text-[10px] text-stone-400">Farg'ona shahri</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Instagram Lookbook Galereya -->
+  <section class="py-12 bg-white border-b border-stone-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-6">
+        <span class="text-xs uppercase tracking-widest text-rose-500 font-semibold font-sans">#EleganceUzbekistan</span>
+        <h3 class="font-serif-luxury text-2xl font-bold text-stone-900">Instagram Trendlarimiz</h3>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div class="aspect-square rounded-2xl overflow-hidden group relative">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute inset-0 bg-stone-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-xl">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden group relative">
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute inset-0 bg-stone-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-xl">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden group relative">
+          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute inset-0 bg-stone-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-xl">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden group relative">
+          <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute inset-0 bg-stone-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-xl">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden group relative">
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute inset-0 bg-stone-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-xl">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden group relative">
+          <img src="https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+          <div class="absolute inset-0 bg-stone-900/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-xl">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 11. Footer (Pastki Bo'lim) -->
+  <footer id="contact-section" class="bg-stone-950 text-stone-300 pt-16 pb-8 border-t border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-stone-800">
+        
+        <!-- Do'kon haqida -->
+        <div class="space-y-4">
+          <div class="flex flex-col">
+            <span class="font-serif-luxury text-2xl font-bold tracking-[0.25em] text-white">ÉLÉGANCE</span>
+            <span class="text-[9px] uppercase tracking-[0.35em] text-rose-400 font-semibold">Haute Couture & Boutique</span>
+          </div>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Zamonaviy o'zbek ayollari uchun yaratilgan nafis, qulay va hashamatli liboslar butigi. Har bir detalda mehr va yuksak did.
+          </p>
+          <div class="flex items-center gap-3 pt-2">
+            <a href="https://t.me/elegance_boutique_uz" target="_blank" class="w-9 h-9 rounded-full bg-stone-900 hover:bg-rose-500 text-stone-300 hover:text-white flex items-center justify-center transition" title="Telegram">
+              <i class="fa-brands fa-telegram"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-full bg-stone-900 hover:bg-rose-500 text-stone-300 hover:text-white flex items-center justify-center transition" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/998901234567" target="_blank" class="w-9 h-9 rounded-full bg-stone-900 hover:bg-rose-500 text-stone-300 hover:text-white flex items-center justify-center transition" title="WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Havolalar -->
+        <div class="space-y-3">
+          <h4 class="font-serif-luxury text-sm font-bold text-white uppercase tracking-wider">Katalog</h4>
+          <ul class="space-y-2 text-xs text-stone-400">
+            <li><a href="#catalog-section" onclick="activeCategory='dresses'; renderCatalog();" class="hover:text-rose-400 transition">Ko'ylaklar to'plami</a></li>
+            <li><a href="#catalog-section" onclick="activeCategory='suits'; renderCatalog();" class="hover:text-rose-400 transition">Klassik kostyumlar</a></li>
+            <li><a href="#catalog-section" onclick="activeCategory='evening'; renderCatalog();" class="hover:text-rose-400 transition">Kechki va oqshom liboslari</a></li>
+            <li><a href="#catalog-section" onclick="activeCategory='casual'; renderCatalog();" class="hover:text-rose-400 transition">Kundalik kiyimlar</a></li>
+            <li><a href="#catalog-section" onclick="activeCategory='outerwear'; renderCatalog();" class="hover:text-rose-400 transition">Ustki kiyimlar</a></li>
+          </ul>
+        </div>
+
+        <!-- Aloqa va Manzil -->
+        <div class="space-y-3">
+          <h4 class="font-serif-luxury text-sm font-bold text-white uppercase tracking-wider">Bog'lanish</h4>
+          <ul class="space-y-2.5 text-xs text-stone-400">
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-location-dot text-rose-500 mt-0.5"></i>
+              <span>Toshkent shahri, Amir Temur shox ko'chasi, 45-uy</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-phone text-rose-500"></i>
+              <span>+998 (90) 123-45-67</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-brands fa-telegram text-rose-500"></i>
+              <span>@elegance_boutique_uz</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i class="fa-solid fa-clock text-rose-500"></i>
+              <span>Har kuni: 09:00 — 21:00</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Yangiliklarga obuna -->
+        <div class="space-y-3">
+          <h4 class="font-serif-luxury text-sm font-bold text-white uppercase tracking-wider">Yangi To'plamlar</h4>
+          <p class="text-xs text-stone-400">Yangi fasl chegirmalari va kolleksiyalar haqida xabardor bo'ling</p>
+          <form onsubmit="event.preventDefault(); showToast('Obuna bo\'lganingiz uchun rahmat! 🌸', '💌'); this.reset();" class="space-y-2">
+            <input type="email" required placeholder="Email yoki Telegram username" class="w-full bg-stone-900 border border-stone-800 rounded-xl py-2 px-3 text-xs text-stone-200 focus:outline-none focus:border-rose-500">
+            <button type="submit" class="w-full py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-semibold transition">
+              Obuna Bo'lish
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Pastki Copyright -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
+        <div>
+          &copy; 2026 ÉLÉGANCE Boutique. Barcha huquqlar himoyalangan.
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="hover:text-stone-300 cursor-pointer">Maxfiylik siyosati</span>
+          <span class="hover:text-stone-300 cursor-pointer">Foydalanish shartlari</span>
+          <button onclick="openAdminModal()" class="text-stone-400 hover:text-rose-400 transition flex items-center gap-1">
+            <i class="fa-solid fa-lock text-[10px]"></i> Do'kon Boshqaruvi
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL VA DRAWERLAR ================= -->
+
+  <!-- 1. Savatcha Draweri (Cart Drawer) -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none">
+    <!-- Backdrop -->
+    <div id="cart-backdrop" onclick="closeCart()" class="drawer-backdrop absolute inset-0 bg-stone-950/50 backdrop-blur-sm"></div>
+    
+    <!-- Drawer kontenti -->
+    <div id="cart-drawer-content" class="drawer-content absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col justify-between">
+      
+      <!-- Drawer Header -->
+      <div class="p-5 border-b border-rose-100 flex items-center justify-between bg-rose-50/40">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-bag-shopping text-rose-600"></i>
+          <h3 class="font-serif-luxury font-bold text-lg text-stone-900">Xaridlar Savatchasi</h3>
+        </div>
+        <button onclick="closeCart()" class="w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-stone-500 transition">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Drawer Mahsulotlar ro'yxati -->
+      <div id="cart-items" class="p-5 flex-1 overflow-y-auto space-y-2">
+        <!-- js orqali to'ldiriladi -->
+      </div>
+
+      <!-- Kupon va Xulosa -->
+      <div class="p-5 border-t border-rose-100 bg-stone-50 space-y-4">
+        
+        <!-- Kupon kiritish -->
+        <div class="flex gap-2">
+          <input type="text" id="coupon-input" placeholder="Promokod (masalan: AYOL2026)" class="flex-1 bg-white border border-stone-200 rounded-xl py-2 px-3 text-xs uppercase focus:outline-none focus:border-rose-500">
+          <button onclick="applyCouponCode()" class="px-4 py-2 bg-stone-900 hover:bg-stone-800 text-white rounded-xl text-xs font-semibold transition">
+            Qo'llash
+          </button>
+        </div>
+
+        <!-- Narxlar hisob-kitobi -->
+        <div class="space-y-1.5 text-xs">
+          <div class="flex justify-between text-stone-600">
+            <span>Mahsulotlar:</span>
+            <span id="cart-subtotal" class="font-semibold text-stone-800">0 so'm</span>
+          </div>
+          <div id="cart-discount-row" class="hidden flex justify-between text-rose-600 font-semibold">
+            <span>Chegirma:</span>
+            <span id="cart-discount">-0 so'm</span>
+          </div>
+          <div class="flex justify-between text-stone-600">
+            <span>Yetkazib berish:</span>
+            <span id="cart-delivery" class="font-semibold text-stone-800">0 so'm</span>
+          </div>
+          <div class="pt-2 border-t border-stone-200 flex justify-between text-base font-bold text-stone-900 font-serif-luxury">
+            <span>Jami to'lov:</span>
+            <span id="cart-total" class="text-rose-600">0 so'm</span>
+          </div>
+        </div>
+
+        <!-- Buyurtma berish tugmasi -->
+        <button id="cart-checkout-btn" onclick="openCheckoutModal()" class="w-full py-3.5 gradient-btn-luxury text-white rounded-2xl font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2">
+          <span>Buyurtmani Rasmiylashtirish</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 2. Sevimlilar Draweri (Wishlist Drawer) -->
+  <div id="wishlist-drawer" class="fixed inset-0 z-50 pointer-events-none">
+    <div id="wishlist-backdrop" onclick="closeWishlist()" class="drawer-backdrop absolute inset-0 bg-stone-950/50 backdrop-blur-sm"></div>
+    <div id="wishlist-drawer-content" class="drawer-content absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col justify-between">
+      
+      <div class="p-5 border-b border-rose-100 flex items-center justify-between bg-rose-50/40">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-heart text-rose-500"></i>
+          <h3 class="font-serif-luxury font-bold text-lg text-stone-900">Sevimlilar Ro'yxati</h3>
+        </div>
+        <button onclick="closeWishlist()" class="w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-stone-500 transition">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <div id="wishlist-items" class="p-5 flex-1 overflow-y-auto space-y-2">
+        <!-- js orqali to'ldiriladi -->
+      </div>
+
+      <div class="p-5 border-t border-rose-100 bg-stone-50">
+        <button onclick="closeWishlist(); scrollToCatalog();" class="w-full py-3 bg-stone-900 text-white rounded-2xl font-semibold text-xs transition hover:bg-stone-800">
+          Katalogni Ko'rishni Davom Etish
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. Tezkor Ko'rish Modali (Quick View Modal) -->
+  <div id="quickview-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div onclick="closeQuickView()" class="absolute inset-0 bg-stone-950/60 backdrop-blur-sm"></div>
+    <div class="modal-content-scale relative bg-white w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl border border-rose-100 z-10 max-h-[90vh] flex flex-col">
+      
+      <!-- Modal Yopish tugmasi -->
+      <button onclick="closeQuickView()" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white/90 shadow-md flex items-center justify-center text-stone-500 hover:text-stone-800 transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="overflow-y-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        
+        <!-- Chap: Rasmlar Galereyasi -->
+        <div class="space-y-3">
+          <div class="rounded-2xl overflow-hidden aspect-[3/4] bg-stone-100 border border-stone-200/60">
+            <img id="qv-main-img" src="" class="w-full h-full object-cover">
+          </div>
+          <div id="qv-thumbnails" class="flex gap-2">
+            <!-- Thumbnails -->
+          </div>
+        </div>
+
+        <!-- O'ng: Mahsulot Ma'lumotlari -->
+        <div class="space-y-4">
+          <div>
+            <span id="qv-category" class="text-[10px] uppercase tracking-wider font-semibold text-rose-600">Toifa</span>
+            <h3 id="qv-title" class="font-serif-luxury text-2xl font-bold text-stone-900 mt-0.5">Sarlavha</h3>
+            <div class="flex items-center gap-2 mt-2">
+              <span id="qv-price" class="font-serif-luxury text-2xl font-extrabold text-stone-900">0 so'm</span>
+              <span id="qv-oldprice" class="text-sm text-stone-400 line-through">0 so'm</span>
+            </div>
+          </div>
+
+          <p id="qv-description" class="text-xs text-stone-600 leading-relaxed"></p>
+
+          <div class="p-3 bg-stone-50 rounded-xl border border-stone-200/60 text-xs">
+            <span class="font-semibold text-stone-800">Mato tarkibi: </span>
+            <span id="qv-fabric" class="text-stone-600"></span>
+          </div>
+
+          <!-- O'lcham tanlash -->
+          <div>
+            <div class="flex justify-between items-center text-xs font-semibold text-stone-700 mb-1.5">
+              <span>O'lchamni tanlang:</span>
+              <button onclick="openSizeGuide()" class="text-[11px] text-rose-600 hover:underline">O'lchamlar jadvali</button>
+            </div>
+            <div id="qv-sizes" class="flex flex-wrap gap-2">
+              <!-- Sizes pills -->
+            </div>
+          </div>
+
+          <!-- Rang tanlash -->
+          <div>
+            <div class="text-xs font-semibold text-stone-700 mb-1.5 flex items-center justify-between">
+              <span>Rang:</span>
+              <span id="qv-color-name" class="text-stone-500 font-normal">Rang nomi</span>
+            </div>
+            <div id="qv-colors" class="flex gap-2 items-center">
+              <!-- Color dots -->
+            </div>
+          </div>
+
+          <!-- Soni va Savatchaga qo'shish -->
+          <div class="pt-4 border-t border-stone-100 flex items-center gap-3">
+            <div class="flex items-center border border-stone-200 rounded-xl overflow-hidden bg-stone-50">
+              <button onclick="changeModalQty(-1)" class="w-9 h-10 flex items-center justify-center text-stone-600 hover:bg-stone-200 text-sm font-semibold transition">-</button>
+              <span id="qv-qty" class="w-10 text-center text-xs font-bold text-stone-800">1</span>
+              <button onclick="changeModalQty(1)" class="w-9 h-10 flex items-center justify-center text-stone-600 hover:bg-stone-200 text-sm font-semibold transition">+</button>
+            </div>
+
+            <button onclick="addModalToCart()" class="flex-1 py-3.5 gradient-btn-luxury text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2">
+              <i class="fa-solid fa-bag-shopping"></i>
+              <span>Savatchaga Qo'shish</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 4. Buyurtma Berish Modali (Checkout Modal - Telegram & WhatsApp) -->
+  <div id="checkout-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div onclick="closeCheckoutModal()" class="absolute inset-0 bg-stone-950/60 backdrop-blur-sm"></div>
+    <div class="modal-content-scale relative bg-white w-full max-w-xl rounded-3xl overflow-hidden shadow-2xl border border-rose-100 z-10 max-h-[95vh] flex flex-col">
+      
+      <!-- Header -->
+      <div class="p-5 border-b border-rose-100 bg-rose-50/50 flex items-center justify-between">
+        <div>
+          <h3 class="font-serif-luxury font-bold text-lg text-stone-900">Buyurtmani Rasmiylashtirish</h3>
+          <p class="text-[11px] text-stone-500">Menejerimiz buyurtmangizni darhol qabul qiladi</p>
+        </div>
+        <button onclick="closeCheckoutModal()" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-stone-500 hover:text-stone-800 transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Forma maydoni -->
+      <div class="overflow-y-auto p-6 space-y-4">
+        
+        <!-- Xarid qilinayotgan tovarlar qisqacha xulosasi -->
+        <div class="p-3.5 bg-stone-50 rounded-2xl border border-stone-200/60">
+          <div class="text-[11px] font-semibold text-stone-500 uppercase tracking-wider mb-2">Buyurtma xulosasi:</div>
+          <div id="checkout-items-summary" class="space-y-1 max-h-32 overflow-y-auto">
+            <!-- JS to'ldiradi -->
+          </div>
+          <div class="pt-2 mt-2 border-t border-stone-200 flex justify-between text-xs font-bold text-stone-900 font-serif-luxury">
+            <span>To'lov summasi:</span>
+            <span id="checkout-total-val" class="text-rose-600 text-sm">0 so'm</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 mb-1">Ism va Familiyangiz *</label>
+            <input type="text" id="order-name" required placeholder="Dilnoza Karimova" class="w-full bg-stone-50 border border-stone-200 rounded-xl py-2.5 px-3 text-xs focus:outline-none focus:border-rose-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 mb-1">Telefon raqamingiz *</label>
+            <input type="tel" id="order-phone" required placeholder="+998 90 123 45 67" class="w-full bg-stone-50 border border-stone-200 rounded-xl py-2.5 px-3 text-xs focus:outline-none focus:border-rose-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 mb-1">Shahar / Viloyat *</label>
+            <select id="order-region" class="w-full bg-stone-50 border border-stone-200 rounded-xl py-2.5 px-3 text-xs focus:outline-none focus:border-rose-500">
+              <option value="Toshkent shahri">Toshkent shahri</option>
+              <option value="Toshkent viloyati">Toshkent viloyati</option>
+              <option value="Samarqand">Samarqand</option>
+              <option value="Buxoro">Buxoro</option>
+              <option value="Farg'ona">Farg'ona</option>
+              <option value="Andijon">Andijon</option>
+              <option value="Namangan">Namangan</option>
+              <option value="Qashqadaryo">Qashqadaryo</option>
+              <option value="Surxondaryo">Surxondaryo</option>
+              <option value="Xorazm">Xorazm</option>
+              <option value="Navoiy">Navoiy</option>
+              <option value="Jizzax">Jizzax</option>
+              <option value="Sirdaryo">Sirdaryo</option>
+              <option value="Qoraqalpog'iston">Qoraqalpog'iston Resp.</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-stone-700 mb-1">Aniq manzil *</label>
+            <input type="text" id="order-address" required placeholder="Tuman, ko'cha, uy / kvartira" class="w-full bg-stone-50 border border-stone-200 rounded-xl py-2.5 px-3 text-xs focus:outline-none focus:border-rose-500">
+          </div>
+        </div>
+
+        <!-- Yetkazish turi -->
+        <div>
+          <label class="block text-xs font-semibold text-stone-700 mb-1.5">Yetkazib berish usuli:</label>
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <label class="flex items-center gap-2 p-2.5 bg-stone-50 border border-stone-200 rounded-xl cursor-pointer hover:border-rose-400">
+              <input type="radio" name="delivery-method" value="Kuryer orqali eshikkacha" checked class="accent-rose-500">
+              <span>Eshikkacha kuryer</span>
+            </label>
+            <label class="flex items-center gap-2 p-2.5 bg-stone-50 border border-stone-200 rounded-xl cursor-pointer hover:border-rose-400">
+              <input type="radio" name="delivery-method" value="BTS / Pochta orqali" class="accent-rose-500">
+              <span>Pochta / BTS punkti</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- To'lov turi -->
+        <div>
+          <label class="block text-xs font-semibold text-stone-700 mb-1.5">To'lov usuli:</label>
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <label class="flex items-center gap-2 p-2.5 bg-stone-50 border border-stone-200 rounded-xl cursor-pointer hover:border-rose-400">
+              <input type="radio" name="payment-method" value="Click / Payme" checked class="accent-rose-500">
+              <span>Click / Payme</span>
+            </label>
+            <label class="flex items-center gap-2 p-2.5 bg-stone-50 border border-stone-200 rounded-xl cursor-pointer hover:border-rose-400">
+              <input type="radio" name="payment-method" value="Naqd (Kuryerga)" class="accent-rose-500">
+              <span>Qabul qilganda naqd</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-stone-700 mb-1">Qo'shimcha istaklar (ixtiyoriy)</label>
+          <textarea id="order-comment" rows="2" placeholder="Masalan: Soat 17:00 dan keyin yetkazing yoki 2 ta o'lcham olib keling" class="w-full bg-stone-50 border border-stone-200 rounded-xl py-2 px-3 text-xs focus:outline-none focus:border-rose-500"></textarea>
+        </div>
+
+        <!-- Telegram yoki WhatsApp orqali jo'natish -->
+        <div class="pt-3 border-t border-stone-100 flex flex-col sm:flex-row gap-3">
+          <button type="button" onclick="submitOrder('telegram')" class="flex-1 py-3.5 bg-[#229ED9] hover:bg-[#1E88E5] text-white rounded-2xl font-bold text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-2 transition">
+            <i class="fa-brands fa-telegram text-base"></i>
+            <span>Telegram Orqali Yuborish</span>
+          </button>
+          <button type="button" onclick="submitOrder('whatsapp')" class="flex-1 py-3.5 bg-[#25D366] hover:bg-[#20BA5C] text-white rounded-2xl font-bold text-xs uppercase tracking-wider shadow-md flex items-center justify-center gap-2 transition">
+            <i class="fa-brands fa-whatsapp text-base"></i>
+            <span>WhatsApp Orqali Yuborish</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 5. O'lchamlar Jadvali Modali (Size Guide Modal) -->
+  <div id="sizeguide-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div onclick="closeSizeGuide()" class="absolute inset-0 bg-stone-950/60 backdrop-blur-sm"></div>
+    <div class="modal-content-scale relative bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl border border-rose-100 z-10 max-h-[90vh] flex flex-col">
+      
+      <div class="p-5 border-b border-rose-100 bg-rose-50/50 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-ruler-combined text-rose-500"></i>
+          <h3 class="font-serif-luxury font-bold text-lg text-stone-900">Ayollar Liboslari O'lchamlar Jadvali</h3>
+        </div>
+        <button onclick="closeSizeGuide()" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-stone-500 hover:text-stone-800 transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto space-y-4 text-xs">
+        <p class="text-stone-600">
+          O'zingizga mos o'lchamni aniqlash uchun santimetrli lenta yordamida ko'krak, bel va dumba aylanangizni o'lchang:
+        </p>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse border border-stone-200 rounded-xl overflow-hidden">
+            <thead>
+              <tr class="bg-stone-100 text-stone-800 font-serif-luxury">
+                <th class="p-2.5 border border-stone-200">Xalqaro</th>
+                <th class="p-2.5 border border-stone-200">O'zbekiston</th>
+                <th class="p-2.5 border border-stone-200">Ko'krak (sm)</th>
+                <th class="p-2.5 border border-stone-200">Bel (sm)</th>
+                <th class="p-2.5 border border-stone-200">Dumba (sm)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-stone-200 text-stone-700">
+              <tr>
+                <td class="p-2.5 font-bold font-mono">XS</td>
+                <td class="p-2.5">40 - 42</td>
+                <td class="p-2.5">80 - 84</td>
+                <td class="p-2.5">60 - 64</td>
+                <td class="p-2.5">86 - 90</td>
+              </tr>
+              <tr class="bg-stone-50">
+                <td class="p-2.5 font-bold font-mono">S</td>
+                <td class="p-2.5">42 - 44</td>
+                <td class="p-2.5">84 - 88</td>
+                <td class="p-2.5">64 - 68</td>
+                <td class="p-2.5">90 - 94</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 font-bold font-mono">M</td>
+                <td class="p-2.5">44 - 46</td>
+                <td class="p-2.5">88 - 92</td>
+                <td class="p-2.5">68 - 72</td>
+                <td class="p-2.5">94 - 98</td>
+              </tr>
+              <tr class="bg-stone-50">
+                <td class="p-2.5 font-bold font-mono">L</td>
+                <td class="p-2.5">46 - 48</td>
+                <td class="p-2.5">92 - 96</td>
+                <td class="p-2.5">72 - 76</td>
+                <td class="p-2.5">98 - 102</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 font-bold font-mono">XL</td>
+                <td class="p-2.5">48 - 50</td>
+                <td class="p-2.5">96 - 102</td>
+                <td class="p-2.5">76 - 82</td>
+                <td class="p-2.5">102 - 108</td>
+              </tr>
+              <tr class="bg-stone-50">
+                <td class="p-2.5 font-bold font-mono">XXL</td>
+                <td class="p-2.5">50 - 52</td>
+                <td class="p-2.5">102 - 108</td>
+                <td class="p-2.5">82 - 88</td>
+                <td class="p-2.5">108 - 114</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="p-3 bg-rose-50 rounded-xl text-rose-800 leading-relaxed">
+          <i class="fa-solid fa-circle-info mr-1 text-rose-600"></i>
+          <b>Maslahat:</b> Agar sizning o'lchamingiz ikki chegara orasida bo'lsa, erkin turadigan kiyimlar uchun kattaroq o'lchamni tanlash tavsiya etiladi.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 6. Do'kon Boshqaruvi Modali (Admin Panel Modal) -->
+  <div id="admin-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div onclick="closeAdminModal()" class="absolute inset-0 bg-stone-950/60 backdrop-blur-sm"></div>
+    <div class="modal-content-scale relative bg-white w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl border border-stone-200 z-10 max-h-[92vh] flex flex-col">
+      
+      <div class="p-5 border-b border-stone-200 bg-stone-100/70 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-sliders text-rose-600"></i>
+          <h3 class="font-serif-luxury font-bold text-lg text-stone-900">ÉLÉGANCE — Butik Boshqaruv Paneli</h3>
+        </div>
+        <button onclick="closeAdminModal()" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-stone-500 hover:text-stone-800 transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto space-y-8">
+        
+        <!-- Yangi mahsulot qo'shish formasi -->
+        <div class="bg-rose-50/40 p-5 rounded-2xl border border-rose-100">
+          <h4 class="font-serif-luxury font-bold text-base text-stone-900 mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-plus text-rose-600"></i> Yangi Libos Qo'shish
+          </h4>
+          
+          <form id="admin-add-form" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 mb-1">Libos nomi *</label>
+                <input type="text" id="admin-p-title" required placeholder="Masalan: Qizil ipak shoyi libos" class="w-full bg-white border border-stone-200 rounded-xl py-2 px-3 text-xs focus:outline-none focus:border-rose-500">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 mb-1">Toifasi *</label>
+                <select id="admin-p-category" class="w-full bg-white border border-stone-200 rounded-xl py-2 px-3 text-xs focus:outline-none focus:border-rose-500">
+                  <option value="dresses">Ko'ylaklar</option>
+                  <option value="suits">Klassik kostyumlar</option>
+                  <option value="evening">Oqshom liboslari</option>
+                  <option value="casual">Kundalik liboslar</option>
+                  <option value="outerwear">Ustki kiyim</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 mb-1">Narxi (so'm) *</label>
+                <input type="number" id="admin-p-price" required placeholder="450000" class="w-full bg-white border border-stone-200 rounded-xl py-2 px-3 text-xs focus:outline-none focus:border-rose-500">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 mb-1">Eski narx (chegirma bo'lsa)</label>
+                <input type="number" id="admin-p-oldprice" placeholder="550000" class="w-full bg-white border border-stone-200 rounded-xl py-2 px-3 text-xs focus:outline-none focus:border-rose-500">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 mb-1">Yorliq (Badge)</label>
+                <input type="text" id="admin-p-badge" placeholder="Yangi / Hit sotuv" class="w-full bg-white border border-stone-200 rounded-xl py-2 px-3 text-xs focus:outline-none focus:border-rose-500">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 mb-1">Mato tarkibi</label>
+                <input type="text" id="admin-p-fabric" placeholder="100% Tabiiy ipak, atlas" class="w-full bg-white border border-stone-200 rounded-xl py-2 px-3 text-xs focus:outline-none focus:border-rose-500">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 mb-1">Rasm havolasi (URL)</label>
+                <input type="url" id="admin-p-image" placeholder="https://images.unsplash.com/..." class="w-full bg-white border border-stone-200 rounded-xl py-2 px-3 text-xs focus:outline-none focus:border-rose-500">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-stone-700 mb-1.5">Mavjud o'lchamlar:</label>
+              <div class="flex gap-4 text-xs">
+                <label class="flex items-center gap-1.5"><input type="checkbox" name="admin-size" value="XS" class="accent-rose-500"> XS</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" name="admin-size" value="S" checked class="accent-rose-500"> S</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" name="admin-size" value="M" checked class="accent-rose-500"> M</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" name="admin-size" value="L" checked class="accent-rose-500"> L</label>
+                <label class="flex items-center gap-1.5"><input type="checkbox" name="admin-size" value="XL" class="accent-rose-500"> XL</label>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-stone-700 mb-1">Batafsil tavsif</label>
+              <textarea id="admin-p-desc" rows="2" placeholder="Libos haqida go'zal tavsif..." class="w-full bg-white border border-stone-200 rounded-xl py-2 px-3 text-xs focus:outline-none focus:border-rose-500"></textarea>
+            </div>
+
+            <button type="submit" class="px-6 py-2.5 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition">
+              + Katalogga Qo'shish
+            </button>
+          </form>
+        </div>
+
+        <!-- Mavjud mahsulotlar ro'yxati va o'chirish -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-serif-luxury font-bold text-base text-stone-900">Mavjud Mahsulotlar Ro'yxati</h4>
+            <button onclick="resetDefaultCatalog()" class="text-xs text-rose-600 hover:underline">
+              <i class="fa-solid fa-rotate-left"></i> Asl katalogga qaytarish
+            </button>
+          </div>
+          <div class="border border-stone-200 rounded-2xl overflow-hidden max-h-64 overflow-y-auto">
+            <table class="w-full text-left border-collapse">
+              <thead class="bg-stone-50 text-[11px] font-semibold text-stone-500 uppercase tracking-wider">
+                <tr>
+                  <th class="p-2.5">Mahsulot</th>
+                  <th class="p-2.5">Narx</th>
+                  <th class="p-2.5">Yorliq</th>
+                  <th class="p-2.5 text-right">Amal</th>
+                </tr>
+              </thead>
+              <tbody id="admin-products-table" class="divide-y divide-stone-100">
+                <!-- JS orqali to'ldiriladi -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Aloqa va Telegram Sozlamalari -->
+        <div class="bg-stone-50 p-5 rounded-2xl border border-stone-200">
+          <h4 class="font-serif-luxury font-bold text-base text-stone-900 mb-3">Do'kon Sozlamalari (Telegram & Telefon)</h4>
+          <form id="admin-settings-form" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-stone-700 mb-1">Telegram username (buyurtmalar uchun)</label>
+              <input type="text" id="admin-set-tg" placeholder="elegance_boutique_uz" value="elegance_boutique_uz" class="w-full bg-white border border-stone-200 rounded-xl py-2 px-3 text-xs focus:outline-none focus:border-rose-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-stone-700 mb-1">WhatsApp raqami</label>
+              <input type="text" id="admin-set-wa" placeholder="998901234567" value="998901234567" class="w-full bg-white border border-stone-200 rounded-xl py-2 px-3 text-xs focus:outline-none focus:border-rose-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-stone-700 mb-1">Telefon raqam</label>
+              <input type="text" id="admin-set-phone" placeholder="+998 90 123-45-67" value="+998 (90) 123-45-67" class="w-full bg-white border border-stone-200 rounded-xl py-2 px-3 text-xs focus:outline-none focus:border-rose-500">
+            </div>
+            <div class="sm:col-span-3">
+              <button type="submit" class="px-6 py-2.5 bg-stone-900 hover:bg-stone-800 text-white rounded-xl text-xs font-bold transition">
+                Sozlamalarni Saqlash
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 7. Suzuvchi Tezkor Telegram Aloqa Tugmasi (Floating Widget) -->
+  <a href="https://t.me/elegance_boutique_uz" target="_blank" class="fixed bottom-6 left-6 z-40 bg-[#229ED9] text-white p-3.5 rounded-full shadow-2xl hover:scale-110 transition duration-300 flex items-center gap-2 group" title="Menejer bilan Telegramda bog'lanish">
+    <i class="fa-brands fa-telegram text-2xl"></i>
+    <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 ease-in-out whitespace-nowrap text-xs font-semibold pr-1">
+      Biz bilan bog'laning
+    </span>
+  </a>
+
+  <!-- Toast Xabarnomalar Idishi -->
+  <div id="toast-container"></div>
+
+  <!-- Skriptlar -->
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
